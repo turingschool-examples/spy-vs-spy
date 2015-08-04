@@ -137,7 +137,7 @@ beforeEach(function () {
   ]);
 });
 
-it('should return the stubbed data', function () {
+it.skip('should return the stubbed data', function () {
   var users = Twitter.get('/users');
   assert.equal(users[0].username, 'stevekinney');
 });

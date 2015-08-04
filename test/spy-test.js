@@ -17,7 +17,7 @@ describe('Logger', function () {
     console.log.restore();
   });
 
-  it('should log to the console', function () {
+  it.skip('should log to the console', function () {
     logger('some message');
     assert(console.log.calledOnce);
   });
@@ -79,7 +79,7 @@ describe('APIFetcher', function () {
     ]);
   });
 
-  it('should return the stubbed data', function () {
+  it.skip('should return the stubbed data', function () {
     var users = Twitter.get('/users');
     assert.equal(users[0].username, 'stevekinney');
   });
