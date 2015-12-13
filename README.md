@@ -4,6 +4,7 @@
 
 * Clone this repository
 * Run `npm init`
+* Run `npm install`
 
 ## Running the Test Suite
 
