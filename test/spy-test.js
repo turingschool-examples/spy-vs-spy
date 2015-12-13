@@ -95,7 +95,7 @@ describe('Play.castMagicMissile', function () {
 
   var Play = {
     castMagicMissile: function(){
-      var roll = Roll.dTwenty()
+      var roll = Roll.dTwenty();
       if (roll < 20) {
         return this.cheat(roll);
       } else {
