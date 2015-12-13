@@ -85,3 +85,54 @@ describe('APIFetcher', function () {
   });
 
 });
+
+describe('Play.castMagicMissile', function () {
+  var Roll = {
+    dTwenty: function(){
+      return Math.floor(Math.random() * (20 - 1 + 1) + 1);
+    }
+  }
+
+  var Play = {
+    castMagicMissile: function(){
+      var roll = Roll.dTwenty()
+      if (roll < 20) {
+        return this.cheat(roll);
+      } else {
+        return roll;
+      }
+    },
+    cheat: function(roll){
+      return num + 1;
+    }
+  }
+
+  it.skip('should cheat on a lousy dTwenty Roll', function () {
+    var critical_fail = 1;
+
+    var stub = sinon.stub(Roll, 'dTwenty').returns(critical_fail);
+
+    var mock = sinon.mock(Play);
+    mock.expects("cheat").once().withArgs(critical_fail);
+
+    Play.castMagicMissile();
+
+    mock.verify();
+    stub.restore();
+    mock.restore();
+  });
+
+  it.skip('should not cheat on a natural 20', function () {
+    var natural_twenty = 20;
+
+    var stub = sinon.stub(Roll, 'dTwenty').returns(natural_twenty);
+    var mock = sinon.mock(Play);
+    mock.expects("cheat").never();
+
+    Play.castMagicMissile();
+
+    mock.verify();
+    stub.restore();
+    mock.restore();
+  });
+});
